@@ -10,11 +10,11 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postList="postList" :step="step"/>
+  <Container :postList="postList" :step="step" :selectImg="selectImg"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input type="file" id="file" class="inputfile" @change="upload" />
       <label for="file" class="input-plus">+</label>
     </ul>
  </div>
@@ -68,7 +68,8 @@ export default {
   }
 ],
   i:0,
-  step:0
+  step:0,
+  selectImg:''
   
     }
   },
@@ -88,6 +89,14 @@ methods:{
     },
     display2:function(){
       this.step = 2;
+    },
+    upload(e){
+      console.log(e)
+      let files = e.target.files;
+      let url = URL.createObjectURL(files[0]);
+      console.log(url);
+      this.selectImg = url;
+      this.step++;
     }
     
   }

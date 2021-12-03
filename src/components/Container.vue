@@ -6,7 +6,7 @@
   </div>
   <!-- 필터선택페이지 -->
   <div v-if="step == 1">
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="{ backgroundImage : `url(${selectImg})` }"></div>
         <div class="filters">
           <div class="filter-1"></div>
           <div class="filter-1"></div>
@@ -37,6 +37,7 @@ export default {
     props:{
         postList : Array,
         step : Number,
+        selectImg: String
     }
 }
 </script>
