@@ -10,7 +10,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postList="postList" />
+  <Container :postList="postList" :step="step"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -19,6 +19,9 @@
     </ul>
  </div>
  <button @click="click">더 보기</button>
+ <button @click="display0">홈화면</button>
+ <button @click="display1">필터화면</button>
+ <button @click="display2">작성화면</button>
   </div>
 </template>
 
@@ -64,7 +67,8 @@ export default {
     filter: "lofi"
   }
 ],
-  i:0
+  i:0,
+  step:0
   
     }
   },
@@ -76,6 +80,15 @@ methods:{
       })
       this.i++
     },
+    display0:function(){
+      this.step = 0;
+    },
+    display1:function(){
+      this.step = 1;
+    },
+    display2:function(){
+      this.step = 2;
+    }
     
   }
 }
