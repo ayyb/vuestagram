@@ -19,9 +19,9 @@
 
 <!-- 글작성페이지 -->
 <div v-if="step == 2">
-    <div class="upload-image"></div>
+    <div class="upload-image" :style="{ backgroundImage : `url(${selectImg})` }"></div>
       <div class="write">
-        <textarea class="write-box">write!</textarea>
+        <textarea class="write-box" @input="$emit('write',$event.target.value)" placeholder="write!"></textarea>
       </div>
 </div>
 </div>
@@ -38,6 +38,11 @@ export default {
         postList : Array,
         step : Number,
         selectImg: String
+    },
+    data(){
+        return{
+            contents:'',
+        }
     }
 }
 </script>

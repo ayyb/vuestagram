@@ -5,12 +5,13 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postList="postList" :step="step" :selectImg="selectImg"/>
+  <Container :postList="postList" :step="step" :selectImg="selectImg" @write="contents = $event"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -69,7 +70,8 @@ export default {
 ],
   i:0,
   step:0,
-  selectImg:''
+  selectImg:'',
+  contents:'',
   
     }
   },
@@ -97,6 +99,21 @@ methods:{
       console.log(url);
       this.selectImg = url;
       this.step++;
+    },
+    publish(){
+      var temp = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.selectImg,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.contents,
+        filter: "perpetua"
+      };
+      this.postList.unshift(temp);
+      this.step = 0;
+      //
     }
     
   }
