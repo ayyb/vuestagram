@@ -18,11 +18,13 @@
       <label for="file" class="input-plus">+</label>
     </ul>
  </div>
+ <button @click="click">더 보기</button>
   </div>
 </template>
 
 <script>
-import Container from './components/Container.vue'
+import Container from './components/Container.vue';
+import axios from 'axios';
 export default {
   name: 'App',
   components: {
@@ -61,8 +63,20 @@ export default {
     content: "우리집 개는 화장실 물도 내림",
     filter: "lofi"
   }
-]
+],
+  i:0
+  
     }
+  },
+methods:{
+    click: function(){
+      axios.get(`https://codingapple1.github.io/vue/more${this.i}.json`).then( res => {
+        console.log(res.data)
+        this.postList.push(res.data)
+      })
+      this.i++
+    },
+    
   }
 }
 </script>
