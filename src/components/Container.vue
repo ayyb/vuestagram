@@ -8,6 +8,7 @@
     <div v-if="step == 1">
       <div
         class="upload-image"
+        :class="[selectFilter]"
         :style="{ backgroundImage: `url(${selectImg})` }"
       ></div>
       <div class="filters">
@@ -24,9 +25,10 @@
     <div v-if="step == 2">
       <div
         class="upload-image"
+        :class="[selectFilter]"
         :style="{ backgroundImage: `url(${selectImg})` }"
       ></div>
-      <div class="write">
+      <div class="r">
         <textarea
           class="write-box"
           @input="$emit('write', $event.target.value)"
@@ -51,9 +53,15 @@ export default {
     step: Number,
     selectImg: String,
   },
+  mounted(){
+    this.emitter.on('updateImage',(cls) =>{
+      this.selectFilter = cls;
+    })
+  },
   data() {
     return {
       contents: "",
+      selectFilter:"",
       filters: [
         "aden",
         "_1977",

@@ -4,7 +4,7 @@
       <div class="profile" :style="{ backgroundImage : `url(${postList.userImage})` }"></div>
       <span class="profile-name">{{postList.name}}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${postList.postImage})` }"></div>
+    <div class="post-body" :style="{ backgroundImage : `url(${postList.postImage})` }" :class="[postList.filter]"></div>
     <div class="post-content">
       <p>{{postList.likes}} Likes</p>
       <p><strong>{{postList.name}}</strong> {{postList.content}}</p>
@@ -18,7 +18,17 @@ export default {
     name : 'Post',
     props:{
         postList : Array,
-    }
+    },
+    data(){
+      return{
+        filter:'',
+      }
+    },
+    mounted() {
+     this.emitter.on('updateImage',(cls)=>{
+      this.filter = cls;
+    })
+    },
 }
 </script>
 

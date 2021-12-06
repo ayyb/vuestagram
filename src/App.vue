@@ -34,6 +34,11 @@ export default {
   components: {
     Container
   },
+  mounted(){
+    this.emitter.on('updateImage',(cls)=>{
+      this.filter = cls;
+    })
+  },
   data(){
     return{
       postList : [
@@ -72,7 +77,7 @@ export default {
   step:0,
   selectImg:'',
   contents:'',
-  
+  filter:'',
     }
   },
 methods:{
@@ -109,8 +114,9 @@ methods:{
         date: "May 15",
         liked: false,
         content: this.contents,
-        filter: "perpetua"
+        filter: this.filter
       };
+      console.log(temp.filter)
       this.postList.unshift(temp);
       this.step = 0;
       //
