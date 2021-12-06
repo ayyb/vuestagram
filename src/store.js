@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { createStore } from 'vuex'
+// import {mapState, mapMutations} from 'vuex'
+
 
 const store = createStore({
   state(){
