@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-item" :class=" [filter]"  :style="{ backgroundImage: `url(${image})` }"></div> 
+  <div class="filter-item" :class=" [filter]"  :style="{ backgroundImage: `url(${image})` }"><slot name="a"></slot></div> 
 </template>
 
 <script>

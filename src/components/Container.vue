@@ -16,7 +16,7 @@
           :filter="item"
           v-for="item in filters"
           :key="item"
-        ></FilterBox>
+        ><template v-slot:a>{{item}}</template></FilterBox>
       </div>
     </div>
 
