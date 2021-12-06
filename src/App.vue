@@ -11,6 +11,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <p>{{$store.state.more}}</p>
+  <button @click="$store.dispatch('getData')">더보기 버튼</button>
   <Container :postList="postList" :step="step" :selectImg="selectImg" @write="contents = $event"/>
 
   <div class="footer">
